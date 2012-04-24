@@ -1,0 +1,89 @@
+/* -*- css -*- */
+
+@bg: #dddcd6;
+@fg: #0d0015;
+
+html, body { margin: 0; padding: 0; }
+body {
+  background: @bg;
+  color: @fg;
+}
+
+:link, :visited {
+  color: inherit;
+  text-decoration: underline;
+}
+
+h1 {
+  font-weight: normal;
+  margin: 0.1em 0 0.5em;
+  line-height: 100%;
+}
+
+p {
+  margin: 0.5em 0;
+}
+
+header h1 {
+  font-size: 2em;
+}
+section h1 {
+  font-size: 1.5em;
+}
+
+header {
+  margin: 0;
+  height: 4em;
+  text-align: center;
+  overflow: hidden;
+}
+
+#rooms, #chat {
+  position: absolute;
+  top: 5em;
+  overflow-x: hidden;
+}
+
+#rooms {
+  left: 5%;
+  width: 20%;
+}
+#chat {
+  right: 5%;
+  width: 65%;
+}
+
+#rooms .room {
+  cursor: pointer;
+}
+#rooms .selected {
+  background: @bg + #101010;
+  font-weight: bolder;
+}
+
+.message .nick {
+  margin-right: 0.5em;
+  font-weight: bold;
+}
+
+@media screen and (min-width: 601px) {
+  #rooms h1 { display: none; }
+  nav { display: none; }
+}
+
+@media screen and (max-width: 600px) {
+  nav { display: block; }
+  #chat, #rooms {
+    position: static;
+    width: 95%;
+    margin: auto;
+  }
+  input, button {
+    font-size: 120%;
+  }
+}
+@media screen and (max-width: 320px) {
+  input {
+    max-width: 200px;
+  }
+}

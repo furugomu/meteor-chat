@@ -1,0 +1,88 @@
+<head>
+ <meta charset=UTF-8>
+ <meta name="viewport" content="width=device-width, maximum-scale=1.0" />
+ <title>みんなのチャット</title>
+</head>
+
+<body>
+ <header>
+  <h1>みんなのチャット</h1>
+ </header>
+<!--
+ <nav>
+  <p>
+   <a href="#rooms">部屋一覧へ</a>
+  </p>
+ </nav>
+-->
+ {{> chat}}
+ {{> rooms}}
+</body>
+
+<template name="rooms">
+ <section id="rooms">
+  <h1>部屋一覧</h1>
+  <form>
+   <p>
+    <input name=name size=10 maxlength=40 placeholder="部屋の名前" required
+     ><button>作る</button>
+   </p>
+  </form>
+  {{#each rooms}}
+   {{> room}}
+  {{/each}}
+ </section>
+</template>
+
+<template name="room">
+ <p class="room {{selectedClassName}}">{{name}}</p>
+</template>
+
+<template name="chat">
+ <section id="chat">
+  {{#if roomName}}
+  <h1>{{roomName}}</h1>
+  {{> input}}
+  {{#each messages}}
+   {{> message}}
+  {{/each}}
+ {{else}}
+  <p>部屋を選んでね。</p>
+ {{/if}}
+ </section>
+</template>
+
+<template name="message">
+  <p class=message>
+   <span class=nick>{{nick}}</span>
+   <span class=text>{{text}}</span>
+  </p>
+</template>
+
+<template name="input">
+ {{#if nick}}
+  {{> inputMessage}}
+ {{else}}
+  {{> inputNick}}
+ {{/if}}
+</template>
+
+<template name="inputMessage">
+ <form>
+  <p>
+   <span class=nick>{{nick}}</span>
+   <input name=text size=30 maxlength=250 required autofocus
+    ><button>発言</button>
+  </p>
+ </form>
+</template>
+
+<template name="inputNick">
+ <form>
+  <p>
+   発言するには名前を入れてね。
+   <input name=nick size=10 maxlength=30 placeholder="あなたの名前" required autofocus>
+   <button>設定</button>
+  </p>
+ </form>
+</template>
