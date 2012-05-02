@@ -35,7 +35,7 @@
 </template>
 
 <template name="room">
- <p class="room {{selectedClassName}}">{{name}}</p>
+ <p class="room {{selectedClassName}}">{{name}} {{updatedAt}}</p>
 </template>
 
 <template name="chat">
@@ -46,6 +46,7 @@
   {{#each messages}}
    {{> message}}
   {{/each}}
+  <footer><p>27時間発言が無いと消えます。ゆっくりしていってね！！</p></footer>
  {{else}}
   <p>部屋を選んでね。</p>
  {{/if}}
@@ -56,6 +57,7 @@
   <p class=message>
    <span class=nick>{{nick}}</span>
    <span class=text>{{text}}</span>
+   <span class=date>{{createdAt}}</span>
   </p>
 </template>
 
@@ -81,7 +83,7 @@
  <form>
   <p>
    発言するには名前を入れてね。
-   <input name=nick size=10 maxlength=30 placeholder="あなたの名前" required autofocus>
+   <input name=nick size=10 maxlength=30 placeholder="あなたの名前" autocomplete=off required autofocus>
    <button>設定</button>
   </p>
  </form>
